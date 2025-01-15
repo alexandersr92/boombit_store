@@ -1,0 +1,34 @@
+
+.modules.screenshot-container {
+	display: none;
+	position: absolute;
+  width: 700px;
+  top: 50%;
+  bottom: inherit !important;
+
+  @media only screen and (max-width: 767px) {
+    width: 400px;
+  }
+}
+
+.acf-editor-wrap iframe {     
+  height: 200px !important;
+}
+
+.modules.screenshot-container img {
+  width: 100%;
+  transform: translateY(-50%);
+  -webkit-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
+}
+
+/*As of now ACF used for custom fields doesn't work well with WP previews. Disableing to avoid confusion. */
+
+.editor-post-preview {
+  display: none !important;
+}
+
+.preview.button {
+  display: none !important;
+}
