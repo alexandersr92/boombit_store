@@ -221,3 +221,81 @@ function hide_editor($use_block_editor, $post_type)
     return false;
   }
 }
+
+
+add_action('rest_api_init', 'add_thumbnail_to_products');
+
+function add_thumbnail_to_products()
+{
+  register_rest_field(
+    'product',
+    'thumbnail',
+    array(
+      'get_callback' => 'get_thumbnail',
+      'update_callback' => null,
+      'schema' => null
+    )
+  );
+
+  register_rest_field(
+    'product',
+    'price',
+    array(
+      'get_callback' => 'get_price',
+      'update_callback' => null,
+      'schema' => null
+    )
+  );
+
+  register_rest_field(
+    'product',
+    'offer',
+    array(
+      'get_callback' => 'get_price_offer',
+      'update_callback' => null,
+      'schema' => null
+    )
+  );
+
+
+    register_rest_field(
+      'post',
+      'thumbnail',
+      array(
+        'get_callback' => 'get_post_thumbnail',
+        'update_callback' => null,
+        'schema' => null
+      )
+    );
+
+}
+
+function get_thumbnail($object, $field_name, $request)
+{
+  $image_id = get_post_thumbnail_id($object['id']);
+  $image = wp_get_attachment_image_src($image_id, 'full');
+  return $image[0];
+}
+
+
+function get_price($object, $field_name, $request)
+{
+  $product = wc_get_product($object['id']);
+  return $product->get_price();
+}
+
+function get_price_offer($object, $field_name, $request)
+{
+  $product = wc_get_product($object['id']);
+  return $product->get_sale_price();
+}
+
+
+
+
+function get_post_thumbnail($object, $field_name, $request)
+{
+  $image_id = get_post_thumbnail_id($object['id']);
+  $image = wp_get_attachment_image_src($image_id, 'full');
+  return $image[0];
+}

@@ -55,7 +55,7 @@ $modules->add_module(
       'label' => 'Image',
       'name' => 'image',
       'aria-label' => '',
-      'type' => 'text',
+      'type' => 'image',
       'instructions' => '',
       'required' => 0,
       'conditional_logic' => 0,
@@ -69,6 +69,22 @@ $modules->add_module(
       'placeholder' => '',
       'prepend' => '',
       'append' => '',
+    ),
+    array(
+      'key' => 'field_67874e6e6fb8d',
+				'label' => 'link',
+				'name' => 'link',
+				'aria-label' => '',
+				'type' => 'link',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'return_format' => 'array',
     ),
   )
 );
