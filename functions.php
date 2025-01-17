@@ -140,6 +140,7 @@ function blankslate_comment_count($count)
 //define dir and path constant 
 define('THEME_DIR', get_template_directory());
 define('THEME_URI', get_template_directory_uri());
+define('DEV_MODE', false);
 
 
 
@@ -184,8 +185,8 @@ function is_dir_empty($dir)
 
 function my_scripts_method()
 {
-  //if folder dist exists
-  if (!is_dir_empty(get_template_directory_uri() . '/dist')) {
+  
+  if (!DEV_MODE) {
 
     wp_enqueue_style('style', get_template_directory_uri() . '/dist/' . get_manifest_css('css'));
     wp_enqueue_script('script', get_template_directory_uri() . '/dist/' . get_manifest('file'), array(), '1.0.0', true);

@@ -18,7 +18,14 @@ export const Header = () => {
         <div className='flex flex-row justify-between items-center p-4 max-w-screen-xl mx-auto'>
           <Brand brand={logo.acf} />
           <NavMenu menu={menu} />
-          <ActionsHeader />
+          {logo && logo.cartIcon && logo.searchIcon && (
+            <ActionsHeader
+              icons={{
+                cart: logo.cartIcon.url,
+                search: logo.searchIcon.url,
+              }}
+            />
+          )}
         </div>
       </header>
     </>

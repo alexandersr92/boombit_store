@@ -37,7 +37,9 @@ function get_siteSetting()
   $siteSetting['siteTitle'] = get_bloginfo('name');
   $siteSetting['siteDescription'] = get_bloginfo('description');
   $siteSetting['siteUrl'] = get_bloginfo('url');
-  $siteSetting['frontPage'] =  get_option('page_on_front');;
+  $siteSetting['frontPage'] =  get_option('page_on_front');
+  $siteSetting['cartIcon'] =  get_field('cart_icon', 'options');
+  $siteSetting['searchIcon'] =  get_field('search_icon', 'options');
 
 
 
@@ -78,7 +80,7 @@ function getSearchResults(){
         'link' => get_the_permalink(),
         'type' => get_post_type(),
         'thumbnail' => get_the_post_thumbnail_url(),
-        
+
       );
     }
   }

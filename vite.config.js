@@ -1,27 +1,25 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import path from 'path'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
 
-let UrlArray
+let UrlArray;
 
 if (process.platform === 'win32') {
-  UrlArray = __dirname.split('\\')
+  UrlArray = __dirname.split('\\');
 } else {
-  UrlArray = __dirname.split('/')
+  UrlArray = __dirname.split('/');
 }
-const finalPath = UrlArray.slice(Math.max(UrlArray.length - 3, 0)).join('/')
-console.log('finalPath', finalPath)
-// eslint-disable-next-line no-unused-vars
+const finalPath = UrlArray.slice(Math.max(UrlArray.length - 3, 0)).join('/');
+
 export default defineConfig(({ command, mode }) => {
   if (mode === 'production') {
     const buildConfig = {
-      base: `/${finalPath}/dist/`,
+      base: `/${finalPath}/dist/assets/`,
       resolve: {
         alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
       },
       build: {
         brotliSize: false,
-        watch: {},
         sourcemap: true,
         target: 'modules',
         rollupOptions: {
@@ -31,11 +29,9 @@ export default defineConfig(({ command, mode }) => {
         },
         manifest: true,
       },
-      plugins: [
-        react(),
-      ],
-    }
-    return buildConfig
+      plugins: [react()],
+    };
+    return buildConfig;
   }
   if (mode === 'development') {
     const devConfig = {
@@ -56,10 +52,8 @@ export default defineConfig(({ command, mode }) => {
       server: {
         port: 5173,
       },
-      plugins: [
-        react(),
-      ],
-    }
-    return devConfig
+      plugins: [react()],
+    };
+    return devConfig;
   }
-})
+});

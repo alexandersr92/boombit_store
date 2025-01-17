@@ -27,7 +27,7 @@ export const Archive = () => {
   return (
     <div className='max-w-screen-xl mx-auto'>
       <h1 className='text-5xl text-center font-black my-10'>Blog</h1>
-      <div className='grid grid-cols-4 gap-4'>
+      <div className='grid grid-flow-col-1 md:grid-cols-4 gap-4 mx-4 md:mx-0'>
         {posts &&
           posts.map((post, index) => <PostCard key={index} {...post} />)}
       </div>

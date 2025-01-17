@@ -14,7 +14,7 @@ export const Footer = () => {
   return (
     <footer className='bg-gray-900'>
       <div className='max-w-screen-xl mx-auto'>
-        <div className='flex flex-col md:flex-row justify-between py-8'>
+        <div className='flex flex-col md:flex-row justify-between py-8 px-4'>
           <p className='text-white'>{copyrigth}</p>
         </div>
       </div>

@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
-import Search from './../../../assets/search.svg';
-import Cart from './../../../assets/shopping.svg';
+
 import { getCartCount, getSearch } from '../../../api';
 import { Link } from 'react-router-dom';
 import { SearchResult } from '../../UI/SearchResult';
-export const ActionsHeader = () => {
+export const ActionsHeader = (icons) => {
   const [bag, setBag] = useState(0);
   const [search, setSearch] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
+
+  console.log(icons.icons);
 
   useEffect(() => {
     getCartCount().then((res) => setBag(res));
@@ -49,7 +50,7 @@ export const ActionsHeader = () => {
           onClick={() => {
             setShowSearch(!showSearch);
           }}
-          src={Search}
+          src={icons.icons.search}
           alt='search'
         />
         {showSearch && (
@@ -78,7 +79,7 @@ export const ActionsHeader = () => {
           {bag}
         </span>
         <Link to='/cart'>
-          <img src={Cart} alt='cart' />
+          <img src={icons.icons.cart} alt='cart' />
         </Link>
       </div>
     </div>

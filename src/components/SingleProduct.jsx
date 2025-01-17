@@ -48,7 +48,7 @@ export const SingleProduct = () => {
 
   return (
     <div className='max-w-screen-xl mx-auto py-20'>
-      <div className='grid grid-cols-2 gap-4'>
+      <div className='grid grid-flow-col-1 px-4 md:px-0 md:grid-cols-2 gap-4'>
         <div>
           <img
             className='h-40'
@@ -83,8 +83,8 @@ export const SingleProduct = () => {
             </span>
             {hotPrice && <span className='font-bold'>C$ {product.offer}</span>}
           </div>
-          <div className='flex flex-row gap-4'>
-            <div className='flex'>
+          <div className='flex flex-col  md:flex-row gap-4'>
+            <div className='flex w-full md:w-auto'>
               <button
                 onClick={() => {
                   if (qty > 1) {
@@ -96,7 +96,7 @@ export const SingleProduct = () => {
                 -
               </button>
               <input
-                className='border-y-2 border-black h-10 w-20 p-4 font-bold text-center'
+                className='border-y-2 border-black h-10 w-full md:w-20 p-4 font-bold text-center'
                 type='number'
                 id='qty'
                 name='qty'
